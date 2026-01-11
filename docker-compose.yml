@@ -1,0 +1,59 @@
+version: '3.8'
+
+services:
+  # PostgreSQL Database
+  postgres:
+    image: postgres:15-alpine
+    container_name: ai-workflow-postgres
+    environment:
+      POSTGRES_USER: workflow_user
+      POSTGRES_PASSWORD: workflow_pass
+      POSTGRES_DB: workflow_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U workflow_user"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # FastAPI Backend
+  backend:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.backend
+    container_name: ai-workflow-backend
+    environment:
+      DATABASE_URL: postgresql://workflow_user:workflow_pass@postgres:5432/workflow_db
+      GEMINI_API_KEY: ${GEMINI_API_KEY}
+      SERPAPI_API_KEY: ${SERPAPI_API_KEY:-}
+      UPLOAD_DIRECTORY: /app/uploads
+      CHROMA_PERSIST_DIRECTORY: /app/chroma_data
+    ports:
+      - "8000:8000"
+    volumes:
+      - uploads_data:/app/uploads
+      - chroma_data:/app/chroma_data
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: unless-stopped
+
+  # React Frontend
+  frontend:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.frontend
+    container_name: ai-workflow-frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+  uploads_data:
+  chroma_data:

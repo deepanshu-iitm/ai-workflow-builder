@@ -1,0 +1,212 @@
+/* Base Node Styles */
+.workflow-node {
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 0;
+  width: 260px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e5e7eb;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  transition: all 0.2s ease;
+  overflow: hidden;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.workflow-node:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.workflow-node.selected {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);
+}
+
+/* Node Header */
+.node-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  background: #fafafa;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.node-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background: #f5f5f5;
+  color: #666;
+}
+
+.node-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.node-title {
+  font-weight: 500;
+  font-size: 13px;
+  color: #1a1a1a;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  line-height: 1.3;
+}
+
+.node-subtitle {
+  font-size: 11px;
+  color: #999;
+  margin-top: 1px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  line-height: 1.3;
+}
+
+/* Node Body */
+.node-body {
+  padding: 10px 14px 12px;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+}
+
+.node-description {
+  font-size: 12px;
+  color: #666;
+  line-height: 1.4;
+  margin: 0;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+}
+
+/* Node Stats */
+.node-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.stat {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  color: #666;
+  background: #f5f5f5;
+  padding: 3px 8px;
+  border-radius: 4px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.stat.web-enabled {
+  background: #f0f9ff;
+  color: #0369a1;
+}
+
+/* Prompt Preview */
+.node-prompt-preview {
+  margin-top: 8px;
+  padding: 8px;
+  background: #fafafa;
+  border-radius: 4px;
+  font-size: 11px;
+  border: 1px solid #f0f0f0;
+}
+
+.prompt-label {
+  color: #999;
+  margin-right: 4px;
+}
+
+.prompt-text {
+  color: #666;
+  font-style: italic;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+}
+
+/* Node Type Specific - Minimal Colors */
+.input-node .node-icon {
+  background: #f0f9ff;
+  color: #0369a1;
+}
+
+.input-node.selected {
+  border-color: #3b82f6;
+}
+
+.knowledge-node .node-icon {
+  background: #faf5ff;
+  color: #7c3aed;
+}
+
+.knowledge-node.selected {
+  border-color: #8b5cf6;
+}
+
+.llm-node .node-icon {
+  background: #f0fdf4;
+  color: #16a34a;
+}
+
+.llm-node.selected {
+  border-color: #22c55e;
+}
+
+.output-node .node-icon {
+  background: #fef3c7;
+  color: #d97706;
+}
+
+.output-node.selected {
+  border-color: #f59e0b;
+}
+
+/* Handles */
+.handle {
+  width: 10px !important;
+  height: 10px !important;
+  border: 2px solid white !important;
+  background: #d1d5db !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) !important;
+  transition: all 0.15s ease !important;
+}
+
+.handle:hover {
+  transform: scale(1.2);
+  background: #6b7280 !important;
+}
+
+.handle-target {
+  left: -5px !important;
+}
+
+.handle-source {
+  right: -5px !important;
+}
+
+/* Hide React Flow handle bounds */
+.react-flow__handle-bottom,
+.react-flow__handle-top {
+  display: none !important;
+}
+
+/* Old BaseNode styles - kept for compatibility */
+.node-card {
+  background: white;
+  border-radius: 8px;
+  padding: 12px;
+  min-width: 220px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e5e7eb;
+  font-family: 'Inter', system-ui, sans-serif;
+}

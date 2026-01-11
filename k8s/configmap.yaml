@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ai-workflow-config
+  namespace: ai-workflow
+data:
+  DATABASE_URL: "postgresql://workflow_user:workflow_pass@postgres-service:5432/workflow_db"
+  UPLOAD_DIRECTORY: "/app/uploads"
+  CHROMA_PERSIST_DIRECTORY: "/app/chroma_data"
+  GEMINI_MODEL: "gemini-2.0-flash"

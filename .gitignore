@@ -1,26 +1,47 @@
-# Python
+# Dependencies
+node_modules/
+venv/
 __pycache__/
 *.pyc
-.venv/
-env/
-venv/
 
-# Node
-node_modules/
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Build outputs
 dist/
 build/
+*.egg-info/
 
-# Environment
-.env
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
 
-# OS
+# OS files
 .DS_Store
+Thumbs.db
 
 # Logs
 *.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
-# ChromaDB
-chroma_db/
+# Testing
+coverage/
+.pytest_cache/
+htmlcov/
 
-# Docker
-*.pid
+# Data directories
+uploads/
+chroma_data/
+
+# Docker volumes
+postgres_data/
+
+# Misc
+*.bak
+*.tmp
