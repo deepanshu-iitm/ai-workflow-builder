@@ -42,4 +42,8 @@ postgres_data/
 # Misc
 *.bak
 *.tmp
-config.bat
+
+.env
+.env.*
+!.env.example
+.vscode/
